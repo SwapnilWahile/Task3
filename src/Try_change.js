@@ -13,8 +13,8 @@ function App(){
   const handleClick = (i) => {
     setIsVisible(!isVisible);
     setIndex(i);
-    setObj(datab[index]);
-    console.log(index);
+    console.log(datab[i]);
+    setObj(datab[i]);
   };
   const handleAdd= ()=>{
     setIsVisible(!isVisible);

@@ -21,9 +21,9 @@ country: "United states",
 times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]}];
 
 function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCount }) {
- 
+  //console.log(JSON.stringify(obj));
   const [data, setData] = useState([])
-  const [address,setaddress]=useState(obj===0?{AdressLine1:"",AddressLIne2:"",phone:"",email:"",city:"",state:"",zipcode:"" ,country:"",time:[]}:obj);
+  const [address,setaddress]=useState({AdressLine1:"",AddressLIne2:"",phone:"",email:"",city:"",state:"",zipcode:"" ,country:"",time:[]});
   //if(index !== null){setaddress(datab[index])}
   const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = address;
   const handlechange = (e)=>{
@@ -230,6 +230,7 @@ function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCo
       <button onClick={handleClick}>back</button>
       <button onClick={consoledata}>console</button>
       <label>{index}</label>
+      <label>{obj.AdressLine1}</label>
     </div>
   );
 }
