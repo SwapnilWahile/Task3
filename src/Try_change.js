@@ -5,13 +5,20 @@ import './App.css';
 
 function App(){
   const string = "> Address & Timings";
-  const[index,setIndex]=useState(0);
-  const [time, setTime] = useState({From:"9:30", To:"13:00"});
+  //const [time, setTime] = useState({From:"9:30", To:"13:00"});
   const [isVisible, setIsVisible] = useState(true);
+  const [index, setIndex] = useState();
+  const [obj, setObj] = useState(0);
+
   const handleClick = (i) => {
-    setIndex(i);
     setIsVisible(!isVisible);
-  }; 
+    setIndex(i);
+    setObj(datab[index]);
+    console.log(index);
+  };
+  const handleAdd= ()=>{
+    setIsVisible(!isVisible);
+  } 
   
   return (isVisible ?
   
@@ -19,8 +26,8 @@ function App(){
         <label id="nav1">Account Settings</label> <label id="nav2">{string}</label>
         <div className="App">
           {
-            datab.map((address, i)=>{
-              return(<span  key={i}><label id="lb1">Address</label><button id="pg1bt1"onClick={handleClick(i)}><FaEdit/></button><br/><br/>
+            datab.map((address, i)=>{console.log(i);
+              return(<span  key={i}><label id="lb1">Address</label><button id="pg1bt1"onClick={()=>handleClick(i)}><FaEdit/></button><br/><br/>
         
               <section className='page1'> 
               
@@ -32,18 +39,16 @@ function App(){
               
               </section><br/><br/>
               <label id="lb1">Timings</label><br/><br/>
-              <section id="time" >
-                {address.times.map((time)=> {return(<span>{time.From} to {time.To} & </span>) })}
-            </section> </span>)
+               </span>)
             })
           }<br/>
         </div>
         <div className="App">
           <label className='page1'>You can add multiple address & timings</label>
-          <button id="pg1bt2" onClick={handleClick}>Add Address & Timing</button>
+          <button id="pg1bt2" onClick={handleAdd}>Add Address & Timing</button>
         </div>
       </div> 
-      :<Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} index={index} setIndex={setIndex}/>
+      :<Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} index={index} setIndex={setIndex} obj={obj}/>
     );
   }
 

@@ -1,33 +1,50 @@
+
 import React from "react";
 import "./Page2.css";
-export let datab = [
-  {
-    AdressLine1: "1395 Park Avenue",
-    AddressLIne2: "",
-    phone: "+1442918940",
-    email: "hawk90@gmail.com",
-    city: "sacramento",
-    state: "California",
-    zipcode: "95814",
-    country: "United states",
-    times: [{From:"9:30", To:"13:00"}, {From:"17:30", To:"21:00"}]
-  }, {
-    AdressLine1: "prabhat pune",
-    AddressLIne2: "",
-    phone: "+1442918940",
-    email: "hawk90@gmail.com",
-    city: "sacramento",
-    state: "California",
-    zipcode: "95814",
-    country: "United states",
-    times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]
+import { useState } from "react";
+export let datab =[ {AdressLine1: "prabhat pune",
+AddressLIne2: "",
+phone: "+1442918940",
+email: "hawk90@gmail.com",
+city: "sacramento",
+state: "California",
+zipcode: "95814",
+country: "United states",
+times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]}, {AdressLine1: "parvti pune",
+AddressLIne2: "",
+phone: "+1442918940",
+email: "hawk90@gmail.com",
+city: "sacramento",
+state: "California",
+zipcode: "95814",
+country: "United states",
+times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]}];
+
+function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCount }) {
+ 
+  const [data, setData] = useState([])
+  const [address,setaddress]=useState(obj===0?{AdressLine1:"",AddressLIne2:"",phone:"",email:"",city:"",state:"",zipcode:"" ,country:"",time:[]}:obj);
+  //if(index !== null){setaddress(datab[index])}
+  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = address;
+  const handlechange = (e)=>{
+    setaddress({...address,[e.target.name]: e.target.value});
   }
-];
-function Input_Form({ isVisible, setIsVisible, count, setCount, index, setIndex }) {
   const handleClick = () => {
     setIsVisible(!isVisible);
   };
-
+  function consoledata(){
+    console.log(address);
+  }
+  function saveData()
+  {
+  
+   console.log(address);
+    //setData([...data,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}]);
+    // database = [...database, ...data];
+    datab.push({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
+    console.log(datab.length)
+    setIsVisible(!isVisible);
+  }
   return (
     <div>
       <div className="rectangle">
@@ -37,31 +54,31 @@ function Input_Form({ isVisible, setIsVisible, count, setCount, index, setIndex 
            <div>
            <p className="leftside">
               <label>Address Line 1</label>
-              <input type="text" className="inputfields" />
-              <p>
+              <input type="text" className="inputfields" name='AdressLine1' onChange={handlechange} value={address.AdressLine1} />
+              <span>
                 <label>Phone</label>{" "}
-                <input type="text" className="inputfields" />
-              </p>
-              <p>
-                City <input type="text" className="inputfields" />
-              </p>
-              <p>
-                Zip Code <input type="text" className="inputfields" />
-              </p>
+                <input type="text" className="inputfields" name="phone"  onChange={handlechange} value={address.phone}/>
+              </span>
+              <span>
+                City <input type="text" className="inputfields"  name="city"  onChange={handlechange} value={address.city} />
+              </span>
+              <span>
+                Zip Code <input type="text" className="inputfields" name="zipcode"  onChange={handlechange} value={address.zipcode}/>
+              </span>
             </p>
            </div>
            <div>
             <p className="leftside">
               <label>Address Line 2</label>
-              <input type="text" className="inputfields" />
-              <p>
+              <input type="text" className="inputfields" name="AddressLIne2"  onChange={handlechange} value={address.AddressLIne2}/>
+              <span>
                 <label>Email</label>{" "}
-                <input type="text" className="inputfields" />
-              </p>
-              <p>
-                State/Province <input type="text" className="inputfields" />
-              </p>
-              <p>
+                <input type="text" className="inputfields" name="email"  onChange={handlechange} value={address.email} />
+              </span>
+              <span>
+                State/Province <input type="text" className="inputfields"  name="state"  onChange={handlechange} value={address.state}/>
+              </span>
+              <span>
                 Country
                 <select id="country" name="country" className="inputfields">
                   <option>select country</option>
@@ -182,7 +199,7 @@ function Input_Form({ isVisible, setIsVisible, count, setCount, index, setIndex 
                   <option value="JE">Jersey</option>
                   <option value="JO">Jordan</option>
                 </select>
-              </p>
+              </span>
             </p>
           </div>
           </div>
@@ -190,12 +207,29 @@ function Input_Form({ isVisible, setIsVisible, count, setCount, index, setIndex 
 
 
         </div>
-       
+        <button onClick={saveData}>Save</button>
+        <div>
+          {
+            data.map((user)=>{
+              return (
+                <li>{user.AdressLine1}+{user.AddressLIne2}+{user.phone}+ {user.email}+{user.city}+{user.state}
+                </li>
+           
+              )
+            })
+              
+  
+          }
+      
+
+        </div>
 
         
       </div>
 
-      <button onClick={handleClick}>add</button>
+      <button onClick={handleClick}>back</button>
+      <button onClick={consoledata}>console</button>
+      <label>{index}</label>
     </div>
   );
 }

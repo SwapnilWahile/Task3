@@ -1,0 +1,53 @@
+time array ==> <section id="time" >
+                {address.times.map((time)=> {return(<span>{time.From} to {time.To} & </span>) })}
+            </section>
+
+<span><label id="lb1">Address</label><button id="pg1bt1"onClick={handleClick}><FaEdit/></button><br/><br/>
+        
+        <section className='page1'> 
+        
+        {address.AdressLine1}<br/>
+        Phone: {address.phone}, Email: {address.email}<br/>
+        {address.city}, {address.state}<br/> 
+        Zip Code: {address.zipcode}, {address.country}
+         
+        
+        </section><br/><br/>
+        <label id="lb1">Timings</label><br/><br/>
+        <section>{time.From} to {time.To} & {time.From} to {time.To}</section> </span>
+
+
+
+, {
+        AdressLine1: "prabhat pune",
+        AddressLIne2: "",
+        phone: "+1442918940",
+        email: "hawk90@gmail.com",
+        city: "sacramento",
+        state: "California",
+        zipcode: "95814",
+        country: "United states",
+        times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]
+      }
+
+
+
+      {
+        datab.map((address, i)=>{
+          return(<span  key={i}><label id="lb1">Address</label><button id="pg1bt1"onClick={handleClick(i)}><FaEdit/></button><br/><br/>
+    
+          <section className='page1'> 
+          
+          {address.AdressLine1}<br/>
+          Phone: {address.phone}, Email: {address.email}<br/>
+          {address.city}, {address.state}<br/> 
+          Zip Code: {address.zipcode}, {address.country}
+           
+          
+          </section><br/><br/>
+          <label id="lb1">Timings</label><br/><br/>
+          <section id="time" >
+            {address.times.map((time)=> {return(<span>{time.From} to {time.To} & </span>) })}
+        </section> </span>)
+        })
+      }<br/>
