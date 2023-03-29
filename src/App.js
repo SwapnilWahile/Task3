@@ -4,6 +4,7 @@ import Input_Form, {datab} from './Page2';
 import './App.css';
 
 function App(){
+  const string = "> Address & Timings";
   const address = datab[0];
   //const [address, setAddress] = useState({Address:"1395 Park Avenue", Phone: "+1442918940", Email: "hawk90@gmail.com", City:"sacramento", State:"California", Zipcode:"95814", Country:"United states"});
   const [time, setTime] = useState({From:"9:30", To:"13:00"});
@@ -13,7 +14,8 @@ function App(){
   }; 
   
   return (isVisible ?
-      <div>
+      <div className='comp'>
+        <label id="nav1">Account Settings</label> <label id="nav2">{string}</label>
         <div className="App">
         <label id="lb1">Address</label><button id="pg1bt1"onClick={handleClick}><FaEdit/></button><br/><br/>
         <section className='page1'> {address.AdressLine1}<br/>

@@ -1,3 +1,6 @@
+.comp{
+  margin: 20px;
+}
 .App {
   border-radius: 12px; 
   padding: 20px;
@@ -13,6 +16,26 @@
   line-height: 24px;
   letter-spacing: 0px;
 }
+#time{
+  margin-bottom: 20px;
+}
+#nav1{
+  margin-left: 30px;
+  font-family: lato;
+  font-weight: regular;
+  font-size: 24px;
+  color: #92D1FF;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
+#nav2{
+  font-family: lato;
+  font-weight: regular;
+  font-size: 24px;
+  color: #FFFFFF;
+  line-height: 28px;
+  letter-spacing: 0px;
+}
 #lb1{
   margin-bottom: 40px;
   font-family: lato;
@@ -25,7 +48,7 @@
 #pg1bt1{
   float: right;
   font-size: 20px;
-  opacity: 100%;
+  opacity: 50%;
 }
 #pg1bt2{
   border-radius: 5px; 
@@ -50,9 +73,4 @@
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

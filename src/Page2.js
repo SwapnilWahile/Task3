@@ -1,54 +1,65 @@
-import React, {useState} from 'react';
-export let countt = 0;
-export let datab =[{AdressLine1:"1395 Park Avenue",AddressLIne2:"",phone:"+1442918940",email:"hawk90@gmail.com",city:"sacramento",state:"California",zipcode:"95814" ,country:"United states"}];
-export default function Input_Form({ isVisible, setIsVisible, count, setCount}) {
-  const [data, setData] = useState([])
-  const [address,setaddress]=useState({AdressLine1:"",AddressLIne2:"",phone:"",email:"",city:"",state:"",zipcode:"" ,country:""});
-  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = address;
-  const handlechange = (e)=>{
-    setaddress({...address,[e.target.name]: e.target.value});
+import React from "react";
+import "./Page2.css";
+export let datab = [
+  {
+    AdressLine1: "1395 Park Avenue",
+    AddressLIne2: "",
+    phone: "+1442918940",
+    email: "hawk90@gmail.com",
+    city: "sacramento",
+    state: "California",
+    zipcode: "95814",
+    country: "United states",
+    times: [{From:"9:30", To:"13:00"}, {From:"17:30", To:"21:00"}]
+  }, {
+    AdressLine1: "prabhat pune",
+    AddressLIne2: "",
+    phone: "+1442918940",
+    email: "hawk90@gmail.com",
+    city: "sacramento",
+    state: "California",
+    zipcode: "95814",
+    country: "United states",
+    times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]
   }
-  const handleClick=()=>{
-    console.log(JSON.stringify({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}));
-    setData([...data, 1]);
-    setData([...data,  {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}]);
-    console.log(data.length);
-    datab = [...datab, ...data];
+];
+function Input_Form({ isVisible, setIsVisible, count, setCount, index, setIndex }) {
+  const handleClick = () => {
     setIsVisible(!isVisible);
-    countt += 1;
-    setCount(count +1);
-  }
- console.log(data.length);
+  };
+
   return (
-    <span>
-      <div className="board">
-      <div className="reactangle">
-       <div className="address">Address</div>
+    <div>
+      <div className="rectangle">
+        <span className="address">Address</span>
+        <div>
         <div className="gridcontainer">
-          <div>
-            <p className="leftside">
-            <label >Address Line 1</label>
-              <input type="text" className="inputfields" name='AdressLine1' onChange={handlechange} value={address.AdressLine1}/>
+           <div>
+           <p className="leftside">
+              <label>Address Line 1</label>
+              <input type="text" className="inputfields" />
               <p>
-                <label >Phone</label> <input type="text" className="inputfields" name="phone"  onChange={handlechange} value={address.phone}/>
+                <label>Phone</label>{" "}
+                <input type="text" className="inputfields" />
               </p>
               <p>
-                City <input type="text" className="inputfields" name="city"  onChange={handlechange} value={address.city} />
+                City <input type="text" className="inputfields" />
               </p>
               <p>
-                Zip Code <input type="text" className="inputfields" name="zipcode"  onChange={handlechange} value={address.zipcode} />
+                Zip Code <input type="text" className="inputfields" />
               </p>
             </p>
-          </div>
-          <div>
+           </div>
+           <div>
             <p className="leftside">
-              Address Line 2 <br />{" "}
-              <input type="text" className="inputfields" name="AddressLIne2"  onChange={handlechange} value={address.AddressLIne2}/>
+              <label>Address Line 2</label>
+              <input type="text" className="inputfields" />
               <p>
-                Email <input type="text" className="inputfields" name="email"  onChange={handlechange} value={address.email} />
+                <label>Email</label>{" "}
+                <input type="text" className="inputfields" />
               </p>
               <p>
-                State/Province <input type="text" className="inputfields" name="state"  onChange={handlechange} value={address.state}/>
+                State/Province <input type="text" className="inputfields" />
               </p>
               <p>
                 Country
@@ -174,10 +185,19 @@ export default function Input_Form({ isVisible, setIsVisible, count, setCount}) 
               </p>
             </p>
           </div>
+          </div>
+          
+
+
         </div>
+       
+
+        
       </div>
+
       <button onClick={handleClick}>add</button>
-      </div>
-    </span>
+    </div>
   );
 }
+
+export default Input_Form;
