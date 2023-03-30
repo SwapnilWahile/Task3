@@ -1,4 +1,4 @@
-import './Page2comp2.css';
+//import './Page2comp2.css';
 import React, { useState } from 'react';
 import { IoCloseCircleOutline} from "react-icons/io5";
 import { IoAddCircleOutline } from "react-icons/io5";

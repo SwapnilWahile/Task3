@@ -1,21 +1,27 @@
-import React, {useState}  from 'react';
+import React, {useState, useContext}  from 'react';
 import { FaEdit } from "react-icons/fa";
-import Input_Form, {datab} from './Page2';
-import Page3 from './Page2comp2';
+//import {createBrowserRouter} from "react-router-dom";
+import Input_Form, {datab, /*AddressContext*/} from './Page2';
 import './App.css';
 
 function App(){
   const string = "> Address & Timings";
-  //const [time, setTime] = useState({From:"9:30", To:"13:00"});
+  //const {address, setaddress} = useContext(AddressContext);
+  //const hold = {address, setaddress};
   const [isVisible, setIsVisible] = useState(true);
   const [index, setIndex] = useState();
   const [obj, setObj] = useState(0);
 
   const handleClick = (i) => {
-    setIsVisible(!isVisible);
+    
     setIndex(i);
-    console.log(datab[i]);
     setObj(datab[i]);
+    //console.log(obj.AdressLine1);
+    let {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = datab[i];
+    console.log({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
+    //setaddress({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
+    //console.log(address);
+    setIsVisible(!isVisible);
   };
   const handleAdd= ()=>{
     setIsVisible(!isVisible);
@@ -27,7 +33,7 @@ function App(){
         <label id="nav1">Account Settings</label> <label id="nav2">{string}</label>
         <div className="App">
           {
-            datab.map((address, i)=>{console.log(i);
+            datab.map((address, i)=>{
               return(<span  key={i}><label id="lb1">Address</label><button id="pg1bt1"onClick={()=>handleClick(i)}><FaEdit/></button><br/><br/>
         
               <section className='page1'> 

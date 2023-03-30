@@ -1,218 +1,350 @@
-import Page3 from './Page2comp2';
-import React from "react";
-import "./Page2.css";
-import { useState } from "react";
-export let datab =[ {AdressLine1: "prabhat pune",
-AddressLIne2: "",
-phone: "+1442918940",
-email: "hawk90@gmail.com",
-city: "sacramento",
-state: "California",
-zipcode: "95814",
-country: "United states",
-times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]}, {AdressLine1: "parvti pune",
-AddressLIne2: "",
-phone: "+1442918940",
-email: "hawk90@gmail.com",
-city: "sacramento",
-state: "California",
-zipcode: "95814",
-country: "United states",
-times: [{From:"7:00", To:"12:00"}, {From:"1:30", To:"7:00"}]}];
+import logo from "./logo.svg";
 
-function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCount }) {
-  //console.log(JSON.stringify(obj));
-  const [data, setData] = useState([])
-  const [address,setaddress]=useState({AdressLine1:"",AddressLIne2:"",phone:"",email:"",city:"",state:"",zipcode:"" ,country:"",time:[]});
-  //if(index !== null){setaddress(datab[index])}
-  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = address;
-  const handlechange = (e)=>{
-    setaddress({...address,[e.target.name]: e.target.value});
-  }
-  const handleClick = () => {
+import "./Page2.css";
+import React, { useState } from "react";
+import Page3 from "./Page2comp2";
+export let datab = [
+  {
+    AdressLine1: "1395 Park Avenue",
+    AddressLIne2: "",
+    phone: "+1442918940",
+    email: "hawk90@gmail.com",
+    city: "sacramento",
+    state: "California",
+    zipcode: "95814",
+    country: "United states",
+  },
+];
+
+function Input_Form({
+  isVisible,
+  setIsVisible,
+  index,
+  setIndex,
+  count,
+  setCount,
+}) {
+  const [data, setData] = useState([
+    {
+      AdressLine1: "1395 Park Avenue",
+      AddressLIne2: "",
+      phone: "+1442918940",
+      email: "hawk90@gmail.com",
+      city: "sacramento",
+      state: "California",
+      zipcode: "95814",
+      country: "United states",
+    },
+  ]);
+  const [address, setaddress] = useState({
+    AdressLine1: "",
+    AddressLIne2: "",
+    phone: "",
+    email: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    country: "",
+    time: [],
+  });
+  const {
+    AdressLine1,
+    AddressLIne2,
+    phone,
+    email,
+    city,
+    state,
+    zipcode,
+    country,
+  } = address;
+  const handlechange = (e) => {
+    setaddress({ ...address, [e.target.name]: e.target.value });
+  };
+  const handleClick = (i) => {
     setIsVisible(!isVisible);
   };
-  function consoledata(){
-    console.log(address);
+
+  function edit(index) {
+    // console.log("datab array is")
+    // console.log(datab);
+    console.log("data at index" + datab[index]);
+    // console.log(data[index]);
+    // let {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}  =data[index];
+    // setaddress({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
   }
-  function saveData()
-  {
-  
-   console.log(address);
-    //setData([...data,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}]);
-    // database = [...database, ...data];
-    datab.push({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
-    console.log(datab.length)
+
+  function saveData() {
+    setData([
+      ...data,
+      {
+        AdressLine1,
+        AddressLIne2,
+        phone,
+        email,
+        city,
+        state,
+        zipcode,
+        country,
+      },
+    ]);
+    // datab = [...datab, ...data];
+    datab.push({
+      AdressLine1,
+      AddressLIne2,
+      phone,
+      email,
+      city,
+      state,
+      zipcode,
+      country,
+    });
+    console.log(datab);
+    console.log("arrayis");
+    console.log(data.length);
+    console.log(data);
     setIsVisible(!isVisible);
   }
   return (
     <div>
       <div className="rectangle">
         <span className="address">Address</span>
-        <div>
-        <div className="gridcontainer">
-           <div>
-           <p className="leftside">
-              <label>Address Line 1</label>
-              <input type="text" className="inputfields" name='AdressLine1' onChange={handlechange} value={address.AdressLine1} />
-              <span>
-                <label>Phone</label>{" "}
-                <input type="text" className="inputfields" name="phone"  onChange={handlechange} value={address.phone}/>
-              </span>
-              <span>
-                City <input type="text" className="inputfields"  name="city"  onChange={handlechange} value={address.city} />
-              </span>
-              <span>
-                Zip Code <input type="text" className="inputfields" name="zipcode"  onChange={handlechange} value={address.zipcode}/>
-              </span>
-            </p>
-           </div>
-           <div>
-            <p className="leftside">
-              <label>Address Line 2</label>
-              <input type="text" className="inputfields" name="AddressLIne2"  onChange={handlechange} value={address.AddressLIne2}/>
-              <span>
-                <label>Email</label>{" "}
-                <input type="text" className="inputfields" name="email"  onChange={handlechange} value={address.email} />
-              </span>
-              <span>
-                State/Province <input type="text" className="inputfields"  name="state"  onChange={handlechange} value={address.state}/>
-              </span>
-              <span>
-                Country
-                <select id="country" name="country" className="inputfields">
-                  <option>select country</option>
-                  <option value="AF">Afghanistan</option>
-                  <option value="AX">Aland Islands</option>
-                  <option value="AL">Albania</option>
-                  <option value="DZ">Algeria</option>
-                  <option value="AS">American Samoa</option>
-                  <option value="AD">Andorra</option>
-                  <option value="AO">Angola</option>
-                  <option value="AI">Anguilla</option>
-                  <option value="AQ">Antarctica</option>
-                  <option value="AG">Antigua and Barbuda</option>
-                  <option value="AR">Argentina</option>
-                  <option value="AM">Armenia</option>
-                  <option value="AW">Aruba</option>
-                  <option value="AU">Australia</option>
-                  <option value="AT">Austria</option>
-                  <option value="AZ">Azerbaijan</option>
-                  <option value="BS">Bahamas</option>
-                  <option value="BH">Bahrain</option>
-                  <option value="BD">Bangladesh</option>
-                  <option value="BB">Barbados</option>
-                  <option value="BY">Belarus</option>
-                  <option value="BE">Belgium</option>
-                  <option value="BZ">Belize</option>
-                  <option value="BJ">Benin</option>
-                  <option value="BM">Bermuda</option>
-                  <option value="BT">Bhutan</option>
-                  <option value="BO">Bolivia</option>
-                  <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
-                  <option value="BA">Bosnia and Herzegovina</option>
-                  <option value="BW">Botswana</option>
-                  <option value="BV">Bouvet Island</option>
-                  <option value="BR">Brazil</option>
-                  <option value="IO">British Indian Ocean Territory</option>
-                  <option value="BN">Brunei Darussalam</option>
-                  <option value="BG">Bulgaria</option>
-                  <option value="BF">Burkina Faso</option>
-                  <option value="BI">Burundi</option>
-                  <option value="KH">Cambodia</option>
-                  <option value="CM">Cameroon</option>
-                  <option value="CA">Canada</option>
-                  <option value="CV">Cape Verde</option>
-                  <option value="KY">Cayman Islands</option>
-                  <option value="CF">Central African Republic</option>
-                  <option value="TD">Chad</option>
-                  <option value="CL">Chile</option>
-                  <option value="CN">China</option>
-                  <option value="CX">Christmas Island</option>
-                  <option value="CC">Cocos (Keeling) Islands</option>
-                  <option value="CO">Colombia</option>
-                  <option value="KM">Comoros</option>
-                  <option value="CG">Congo</option>
-                  <option value="CD">
-                    Congo, Democratic Republic of the Congo
-                  </option>
-                  <option value="CK">Cook Islands</option>
-                  <option value="CR">Costa Rica</option>
-                  <option value="CI">Cote D'Ivoire</option>
-                  <option value="HR">Croatia</option>
-                  <option value="CU">Cuba</option>
-                  <option value="CW">Curacao</option>
-                  <option value="CY">Cyprus</option>
-                  <option value="CZ">Czech Republic</option>
-                  <option value="DK">Denmark</option>
-                  <option value="DJ">Djibouti</option>
-                  <option value="DM">Dominica</option>
-                  <option value="DO">Dominican Republic</option>
-                  <option value="EC">Ecuador</option>
-                  <option value="EG">Egypt</option>
-                  <option value="SV">El Salvador</option>
-                  <option value="GQ">Equatorial Guinea</option>
-                  <option value="ER">Eritrea</option>
-                  <option value="EE">Estonia</option>
-                  <option value="ET">Ethiopia</option>
-                  <option value="FK">Falkland Islands (Malvinas)</option>
-                  <option value="FO">Faroe Islands</option>
-                  <option value="FJ">Fiji</option>
-                  <option value="FI">Finland</option>
-                  <option value="FR">France</option>
-                  <option value="GF">French Guiana</option>
-                  <option value="PF">French Polynesia</option>
-                  <option value="TF">French Southern Territories</option>
-                  <option value="GA">Gabon</option>
-                  <option value="GM">Gambia</option>
-                  <option value="GE">Georgia</option>
-                  <option value="DE">Germany</option>
-                  <option value="GH">Ghana</option>
-                  <option value="GI">Gibraltar</option>
-                  <option value="GR">Greece</option>
-                  <option value="GL">Greenland</option>
-                  <option value="GD">Grenada</option>
-                  <option value="GP">Guadeloupe</option>
-                  <option value="GU">Guam</option>
-                  <option value="GT">Guatemala</option>
-                  <option value="GG">Guernsey</option>
-                  <option value="GN">Guinea</option>
-                  <option value="GW">Guinea-Bissau</option>
-                  <option value="GY">Guyana</option>
-                  <option value="HT">Haiti</option>
-                  <option value="HM">Heard Island and Mcdonald Islands</option>
-                  <option value="VA">Holy See (Vatican City State)</option>
-                  <option value="HN">Honduras</option>
-                  <option value="HK">Hong Kong</option>
-                  <option value="HU">Hungary</option>
-                  <option value="IS">Iceland</option>
-                  <option value="IN">India</option>
-                  <option value="ID">Indonesia</option>
-                  <option value="IR">Iran, Islamic Republic of</option>
-                  <option value="IQ">Iraq</option>
-                  <option value="IE">Ireland</option>
-                  <option value="IM">Isle of Man</option>
-                  <option value="IL">Israel</option>
-                  <option value="IT">Italy</option>
-                  <option value="JM">Jamaica</option>
-                  <option value="JP">Japan</option>
-                  <option value="JE">Jersey</option>
-                  <option value="JO">Jordan</option>
-                </select>
-              </span>
-              
-            </p>
+        <div className="outer">
+          <div className="gridcontainer">
+            <div>
+              <p className="leftside">
+                <label>Address Line 1</label>
+                <input
+                  type="text"
+                  className="inputfields"
+                  name="AdressLine1"
+                  onChange={handlechange}
+                  value={address.AdressLine1}
+                />
+                <div>
+                  <label>Phone</label>{" "}
+                  <input
+                    type="text"
+                    className="inputfields"
+                    name="phone"
+                    onChange={handlechange}
+                    value={address.phone}
+                  />
+                </div>
+                <div>
+                  City{" "}
+                  <input
+                    type="text"
+                    className="inputfields"
+                    name="city"
+                    onChange={handlechange}
+                    value={address.city}
+                  />
+                </div>
+                <div>
+                  Zip Code{" "}
+                  <input
+                    type="text"
+                    className="inputfields"
+                    name="zipcode"
+                    onChange={handlechange}
+                    value={address.zipcode}
+                  />
+                </div>
+              </p>
+            </div>
+            <div>
+              <p className="leftside">
+                <label>Address Line 2</label>
+                <input
+                  type="text"
+                  className="inputfields"
+                  name="AddressLIne2"
+                  onChange={handlechange}
+                  value={address.AddressLIne2}
+                />
+                <div>
+                  <label>Email</label>{" "}
+                  <input
+                    type="text"
+                    className="inputfields"
+                    name="email"
+                    onChange={handlechange}
+                    value={address.email}
+                  />
+                </div>
+                <div>
+                  State/Province{" "}
+                  <input
+                    type="text"
+                    className="inputfields"
+                    name="state"
+                    onChange={handlechange}
+                    value={address.state}
+                  />
+                </div>
+                <div>
+                  Country
+                  <select
+                    id="country"
+                    name="country"
+                    className="inputfields"
+                    onChange={handlechange}
+                  >
+                    <option>select country</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Aland Islands">Aland Islands</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Algeria">Algeria</option>
+                    <option value="American Samoa">American Samoa</option>
+                    <option value="AD">Andorra</option>
+                    <option value="Andorra">Angola</option>
+                    <option value="Anguilla">Anguilla</option>
+                    <option value="Antarctica">Antarctica</option>
+                    <option value="Antigua and Barbuda">
+                      Antigua and Barbuda
+                    </option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Armenia">Armenia</option>
+                    <option value="Aruba">Aruba</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Azerbaijan">Azerbaijan</option>
+                    <option value="Bahamas">Bahamas</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Belize">Belize</option>
+                    <option value="Benin">Benin</option>
+                    <option value="Bermuda">Bermuda</option>
+                    <option value="Bhutan">Bhutan</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Bonaire, Sint Eustatius and Saba">
+                      Bonaire, Sint Eustatius and Saba
+                    </option>
+                    <option value="Bosnia and Herzegovina">
+                      Bosnia and Herzegovina
+                    </option>
+                    <option value="Botswana">Botswana</option>
+                    <option value="Bouvet Island">Bouvet Island</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="British Indian Ocean Territory">
+                      British Indian Ocean Territory
+                    </option>
+                    <option value="Brunei Darussalam">Brunei Darussalam</option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Burkina Faso">Burkina Faso</option>
+                    <option value="Burundi">Burundi</option>
+                    <option value="Cambodia">Cambodia</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Cape Verde">Cape Verde</option>
+                    <option value="Cayman Islands">Cayman Islands</option>
+                    <option value="Central African Republic">
+                      Central African Republic
+                    </option>
+                    <option value="Chad">Chad</option>
+                    <option value="Chile">Chile</option>
+                    <option value="China">China</option>
+                    <option value="Christmas Island">Christmas Island</option>
+                    <option value="Cocos">Cocos (Keeling) Islands</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Comoros">Comoros</option>
+                    <option value="Congo">Congo</option>
+                    <option value=" Congo, Democratic Republic of the Congo">
+                      Congo, Democratic Republic of the Congo
+                    </option>
+                    <option value="Cook Islands">Cook Islands</option>
+                    <option value="Costa Rica">Costa Rica</option>
+                    <option value="Cote D'Ivoire">Cote D'Ivoire</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Cuba">Cuba</option>
+                    <option value="Curacao">Curacao</option>
+                    <option value="Cyprus">Cyprus</option>
+                    <option value="Czech Republic">Czech Republic</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Djibouti">Djibouti</option>
+                    <option value="Dominica">Dominica</option>
+                    <option value="Dominican RepublicDO">
+                      Dominican Republic
+                    </option>
+                    <option value="Ecuador">Ecuador</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="El Salvador">El Salvador</option>
+                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                    <option value="Eritrea">Eritrea</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Ethiopia">Ethiopia</option>
+                    <option value="Falkland Islands (Malvinas)">
+                      Falkland Islands (Malvinas)
+                    </option>
+                    <option value="Faroe Islands">Faroe Islands</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="French Guiana">French Guiana</option>
+                    <option value="French Polynesia">French Polynesia</option>
+                    <option value="French Southern Territories">
+                      French Southern Territories
+                    </option>
+                    <option value="GA">Gabon</option>
+                    <option value="Gambia">Gambia</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Greece">Greece</option>
+                    <option value="GreenLand">Greenland</option>
+                    <option value="Grenada">Grenada</option>
+                    <option value="Guadeloupe">Guadeloupe</option>
+                    <option value="Guam">Guam</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="Guernsey">Guernsey</option>
+                    <option value="Guinea">Guinea</option>
+                    <option value="Guinea-Bissau">Guinea-Bissau</option>
+                    <option value="Guyana">Guyana</option>
+                    <option value="Haiti">Haiti</option>
+                    <option value="Heard Island and Mcdonald Islands">
+                      Heard Island and Mcdonald Islands
+                    </option>
+                    <option value="Holy See ">
+                      Holy See (Vatican City State)
+                    </option>
+                    <option value="Honduras">Honduras</option>
+                    <option value="Hong Kong">Hong Kong</option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Iraq">Iraq</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Isle of Man">Isle of Man</option>
+                    <option value="Israel">Israel</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jamaica">Jamaica</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Jersey">Jersey</option>
+                    <option value="Jordan">Jordan</option>
+                  </select>
+                </div>
+              </p>
+            </div>
           </div>
-          </div>
-          
-
-
+          <Page3 />
         </div>
-       
-        <button onClick={saveData}>Save</button>
         <div>
+          <button onClick={saveData} className="button">
+            Save
+          </button>
+        </div>
+        {/* <button onClick={edit}>Edit</button> */}
+        {/* <label>{datab[index]}</label> */}
+
+        {/* <div>
           {
-            data.map((user)=>{
+            datab.map((user)=>{
               return (
                 <li>{user.AdressLine1}+{user.AddressLIne2}+{user.phone}+ {user.email}+{user.city}+{user.state}
                 </li>
@@ -224,15 +356,10 @@ function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCo
           }
       
 
-        </div>
-
-        < Page3 />
+        </div> */}
       </div>
 
       <button onClick={handleClick}>back</button>
-      <button onClick={consoledata}>console</button>
-      <label>{index}</label>
-      <label>{obj.AdressLine1}</label>
     </div>
   );
 }
