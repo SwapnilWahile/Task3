@@ -1,6 +1,7 @@
 import React, {useState}  from 'react';
 import { FaEdit } from "react-icons/fa";
 import Input_Form, {datab} from './Page2';
+import Page3 from './Page2comp2';
 import './App.css';
 
 function App(){
@@ -48,7 +49,10 @@ function App(){
           <button id="pg1bt2" onClick={handleAdd}>Add Address & Timing</button>
         </div>
       </div> 
-      :<Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} index={index} setIndex={setIndex} obj={obj}/>
+      : <div>
+      <Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} index={index} setIndex={setIndex} obj={obj}/>
+      
+      </div>
     );
   }
 

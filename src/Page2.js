@@ -1,4 +1,4 @@
-
+import Page3 from './Page2comp2';
 import React from "react";
 import "./Page2.css";
 import { useState } from "react";
@@ -200,6 +200,7 @@ function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCo
                   <option value="JO">Jordan</option>
                 </select>
               </span>
+              
             </p>
           </div>
           </div>
@@ -207,6 +208,7 @@ function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCo
 
 
         </div>
+       
         <button onClick={saveData}>Save</button>
         <div>
           {
@@ -224,7 +226,7 @@ function Input_Form({ isVisible, setIsVisible, index,setIndex ,obj ,count, setCo
 
         </div>
 
-        
+        < Page3 />
       </div>
 
       <button onClick={handleClick}>back</button>
