@@ -20,7 +20,7 @@ export default function App() {
     state: "",
     zipcode: "",
     country: "",
-    times: []
+    times: [{Fromh:'9', Fromm:'30', Toh:'13', Tom:'00'}, {Fromh:'17', Fromm:'30', Toh:'21', Tom:'00'}]
   });
   const [data, setData] = useState([
     {

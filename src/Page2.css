@@ -1,13 +1,15 @@
 .rectangle {
-  /* width: 1100px;
-  height: 500px; */
-  padding: 20px;
+  width: 89%;
+  /* height: 500px; */ 
+  padding: 20px; 
   background-color: #ffffff;
   position: absolute;
   /* top: 50px;
   left: 50px; */
   border-radius: 12px;
-  margin: 30px;
+  margin-left: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px; 
   opacity: 1;
 }
 .gridcontainer {
@@ -26,7 +28,12 @@
   color: #606060;
   opacity: 1;
 }
+.required::after{
+  content:"*";
+  color: rgb(230, 35, 35);
+}
 .leftside {
+
   width: 400px;
   padding-top: 20px;
   padding-left: 0px;
@@ -36,6 +43,7 @@
   letter-spacing: 0px;
   opacity: 1;
   color: #686868;
+  line-height: 2.5;
 }
 .inputfields {
   width: 400px;
