@@ -1,42 +1,72 @@
 .comp{
   margin: 20px;
 }
-.App {
-  border-radius: 12px; 
-  padding: 20px;
+.Header{
+  top: 87px;
+  left: 274px;
+  width: 395px;
+  height: 29px;
   text-align: left;
-  background-color: white;
-  margin: 30px;
-}
-.page1{
-  font-family: Lato;
-  font-weight: regular;
-  font-size: 20px;
-  color: #000000;
-  line-height: 24px;
-  letter-spacing: 0px;
-}
-#time{
-  margin-bottom: 20px;
-}
-#nav1{
   margin-left: 30px;
   font-family: lato;
   font-weight: regular;
   font-size: 24px;
-  color: #92D1FF;
   line-height: 28px;
   letter-spacing: 0px;
+  opacity: 1;
+}
+.App {
+  top: 146px;
+  left: 274px;
+  width: 1064px;
+  height: 311px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #0000000F;
+  border-radius: 12px;
+  opacity: 1;
+  border-radius: 12px; 
+  padding: 20px;
+  text-align: left;
+  margin: 30px;
+}
+.App2{
+
+  top: 475px;
+  left: 274px;
+  width: 1064px;
+  height: 40px;
+  border-radius: 12px; 
+  padding: 20px;
+  text-align: left;
+  margin: 30px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #0000000F;
+  border-radius: 12px;
+  opacity: 1;
+}
+
+#time{
+  margin-bottom: 20px;
+}
+#nav1{
+top: 0px;
+left: 0px;
+width: 178px;
+color: #92D1FF;
+ 
 }
 #nav2{
-  font-family: lato;
-  font-weight: regular;
-  font-size: 24px;
-  color: #FFFFFF;
-  line-height: 28px;
-  letter-spacing: 0px;
+top: 0px;
+left: 178px;
+width: 218px;
+color: #FFFFFF;
 }
 #lb1{
+  top: 173px;
+  left: 302px;
+  width: 86px;
+  height: 29px;
+  text-align: left;
   margin-bottom: 40px;
   color: #606060;
   font-family: Lato;
@@ -44,19 +74,69 @@
   font-size: 24px;
   line-height: 28px;
   letter-spacing: 0px;
+  opacity: 1;
   
 }
+#lb2{
+  top: 352px;
+  left: 302px;
+  width: 83px;
+  height: 29px;
+  text-align: left;
+  font-family: Lato;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  color: #606060;
+  opacity: 1;
+}
+#time{
+  top: 395px;
+  left: 302px;
+  width: 272px;
+  height: 24px;
+  text-align: left;
+  font-family: Lato;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+#div2lbl{
+  top: 513px;
+  left: 302px;
+  width: 358px;
+  height: 24px;
+  text-align: center;
+  font-family: Lato;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  color: #606060;
+  opacity: 1;
+}
 #pg1bt1{
+  top: 173px;
+  left: 1292px;
+  width: 24px;
+  height: 24px;
   float: right;
   font-size: 20px;
   opacity: 50%;
 }
 #pg1bt2{
-  border-radius: 5px; 
+  top: 511px;
+  left: 1116px;
+  width: 200px;
+  height: 36px;
+  border-radius: 6px; 
   font-family: lato;
   font-weight: bold;
   font-size: 14px;
-  background-color: #f58e3a;
+  background: #FF8000 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 12px #0000000F;
   color: #FFFFFF;
   float: right;
 }

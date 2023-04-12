@@ -1,40 +1,31 @@
 import React, {useState, useContext}  from 'react';
 import { FaEdit } from "react-icons/fa";
-//import {createBrowserRouter} from "react-router-dom";
-import Input_Form, {datab, /*AddressContext*/} from './Page2';
-import './App.css';
+import { Outlet, Link } from "react-router-dom";
+import {datab} from './Page2';
+//import './App.css';
+import './alternate.css';
 
-function App(){
+function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
   const string = "> Address & Timings";
-  //const {address, setaddress} = useContext(AddressContext);
-  //const hold = {address, setaddress};
-  const [isVisible, setIsVisible] = useState(true);
-  const [index, setIndex] = useState();
-  const [obj, setObj] = useState(0);
-
+  //const [index, setIndex] = useState();
   const handleClick = (i) => {
     
     setIndex(i);
-    setObj(datab[i]);
-    //console.log(obj.AdressLine1);
+    console.log(i);
+    setObj(data[i]);
+    setIsVisible(!isVisible);
     let {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = datab[i];
     console.log({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
-    //setaddress({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
-    //console.log(address);
-    setIsVisible(!isVisible);
   };
-  const handleAdd= ()=>{
-    setIsVisible(!isVisible);
-  } 
+
   
-  return (isVisible ?
-  
+  return (
       <div className='comp'>
-        <label id="nav1">Account Settings</label> <label id="nav2">{string}</label>
+        <div className='Header'><label id="nav1">Account Settings</label> <label id="nav2">{string}</label></div>
         <div className="App">
           {
-            datab.map((address, i)=>{
-              return(<span  key={i}><label id="lb1">Address</label><button id="pg1bt1"onClick={()=>handleClick(i)}><FaEdit/></button><br/><br/>
+            data.map((address, i)=>{
+              return(<span  key={i}><label id="lb1">Address</label><Link to="/Page2" ><button id="pg1bt1" onClick={()=>handleClick(i)} ><FaEdit/></button></Link><br/><br/>
         
               <section className='page1'> 
               
@@ -45,22 +36,21 @@ function App(){
                
               
               </section><br/><br/>
-              <label id="lb1">Timings</label><br/><br/>
+              <label id="lb2">Timings</label><br/><br/>
+              <section id="time" ></section>
                </span>)
             })
           }<br/>
         </div>
-        <div className="App">
-          <label className='page1'>You can add multiple address & timings</label>
-          <button id="pg1bt2" onClick={handleAdd}>Add Address & Timing</button>
+        <div className="App2">
+          <label id='div2lbl'>You can add multiple address & timings</label>
+          <Link to="/Page2" ><button id="pg1bt2" >Add Address & Timing</button></Link>
+          <Outlet />
+          
         </div>
       </div> 
-      : <div>
-      <Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} index={index} setIndex={setIndex} obj={obj}/>
-      
-      </div>
     );
   }
 
 
-export default App;
+export default Page1;

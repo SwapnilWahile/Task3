@@ -9,7 +9,6 @@
   border-radius: 12px;
   margin: 30px;
   opacity: 1;
-  margin-bottom: 20px;
 }
 .gridcontainer {
   display: flex;
@@ -20,7 +19,7 @@
 }
 .address {
   padding-top: 20px;
-  padding-left: 90px;
+  padding-left: 0px;
   text-align: left;
   font: normal normal bold 24px/28px Lato;
   letter-spacing: 0px;
@@ -30,7 +29,7 @@
 .leftside {
   width: 400px;
   padding-top: 20px;
-  padding-left: 90px;
+  padding-left: 0px;
   padding-right: 40px;
   text-align: left;
   font: normal normal bold 20px/24px Lato;
@@ -52,7 +51,7 @@
 }
 
 .outer {
-  text-align: center;
+  text-align: left;
 }
 
 .button {

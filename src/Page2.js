@@ -1,5 +1,4 @@
-import logo from "./logo.svg";
-
+import { Link } from "react-router-dom";
 import "./Page2.css";
 import React, { useState } from "react";
 import Page3 from "./Page2comp2";
@@ -19,34 +18,19 @@ export let datab = [
 function Input_Form({
   isVisible,
   setIsVisible,
+  setData,
+  data,
+  obj,
   index,
+  setObj,
   setIndex,
   count,
   setCount,
 }) {
-  const [data, setData] = useState([
-    {
-      AdressLine1: "1395 Park Avenue",
-      AddressLIne2: "",
-      phone: "+1442918940",
-      email: "hawk90@gmail.com",
-      city: "sacramento",
-      state: "California",
-      zipcode: "95814",
-      country: "United states",
-    },
-  ]);
-  const [address, setaddress] = useState({
-    AdressLine1: "",
-    AddressLIne2: "",
-    phone: "",
-    email: "",
-    city: "",
-    state: "",
-    zipcode: "",
-    country: "",
-    time: [],
-  });
+  console.log(obj);
+  const [address, setaddress] = useState(obj);
+
+  
   const {
     AdressLine1,
     AddressLIne2,
@@ -73,6 +57,48 @@ function Input_Form({
     // setaddress({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
   }
 
+  function update(){
+    let hold =  [...data];
+    console.log(index);
+     hold.splice(index,1,{
+        AdressLine1,
+        AddressLIne2,
+        phone,
+        email,
+        city,
+        state,
+        zipcode,
+        country,
+      });
+      setData(hold);
+      setObj({
+        AdressLine1: "",
+        AddressLIne2: "",
+        phone: "",
+        email: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        country: "",
+        time: [],
+      });
+      setIndex(0);
+      setIsVisible(!isVisible);
+  }
+function Cancel(){
+  setIsVisible(!isVisible);
+  setObj({
+    AdressLine1: "",
+    AddressLIne2: "",
+    phone: "",
+    email: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    country: "",
+    time: [],
+  });
+}
   function saveData() {
     setData([
       ...data,
@@ -87,6 +113,7 @@ function Input_Form({
         country,
       },
     ]);
+    
     // datab = [...datab, ...data];
     datab.push({
       AdressLine1,
@@ -98,11 +125,13 @@ function Input_Form({
       zipcode,
       country,
     });
+
+
     console.log(datab);
     console.log("arrayis");
     console.log(data.length);
     console.log(data);
-    setIsVisible(!isVisible);
+    //setIsVisible(!isVisible);
   }
   return (
     <div>
@@ -188,9 +217,10 @@ function Input_Form({
                     id="country"
                     name="country"
                     className="inputfields"
+                   
                     onChange={handlechange}
                   >
-                    <option>select country</option>
+                    <option>select Country</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="Aland Islands">Aland Islands</option>
                     <option value="Albania">Albania</option>
@@ -334,32 +364,17 @@ function Input_Form({
           </div>
           <Page3 />
         </div>
-        <div>
-          <button onClick={saveData} className="button">
+        <div>{isVisible? <Link to="/"><button onClick={saveData} className="button">
             Save
-          </button>
+          </button></Link> : <Link to="/"><button onClick={update} className="button">
+          update
+          </button> <button className="button" onClick={Cancel}>Cancel</button></Link>}
+        
+          
         </div>
-        {/* <button onClick={edit}>Edit</button> */}
-        {/* <label>{datab[index]}</label> */}
 
-        {/* <div>
-          {
-            datab.map((user)=>{
-              return (
-                <li>{user.AdressLine1}+{user.AddressLIne2}+{user.phone}+ {user.email}+{user.city}+{user.state}
-                </li>
-           
-              )
-            })
-              
-  
-          }
-      
-
-        </div> */}
       </div>
 
-      <button onClick={handleClick}>back</button>
     </div>
   );
 }

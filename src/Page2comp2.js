@@ -146,14 +146,7 @@ function Page4() {
 }
 
  
-//  export default function page3() {
-//    return (
-//      <div>
-       
-//      </div>
-//    )
-//  }
- 
+
 
 
 export default function Page3() {
@@ -164,7 +157,7 @@ export default function Page3() {
         setbolin(false);
      }
     
-  return (<div><div id ="display"><p style={{font:'22px Lato'}} >Timings</p><Page5/>{bolin ?
+  return (<div><div id ="display"><p id="Tlbl" style={{font:'22px Lato'}} >Timings</p><Page5/>{bolin ?
     <div>
      
    <button id="button" onClick={handleclick}><IoAddCircleOutline Add-Timing color="#0078D4" /><u>Add Timings</u></button>

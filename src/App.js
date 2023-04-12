@@ -1,6 +1,7 @@
 import React, {useState}  from 'react';
 import { FaEdit } from "react-icons/fa";
 import Input_Form, {datab} from './Page2';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 
 function App(){
@@ -13,7 +14,9 @@ function App(){
     setIsVisible(!isVisible);
   }; 
   
-  return (isVisible ?
+  return (
+    <BrowserRouter>
+    isVisible ?
       <div className='comp'>
         <label id="nav1">Account Settings</label> <label id="nav2">{string}</label>
         <div className="App">
@@ -31,7 +34,7 @@ function App(){
           <button id="pg1bt2" onClick={handleClick}>Add Address & Timing</button>
         </div>
       </div>
-      :<Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} />
+      :<Input_Form  isVisible={isVisible} setIsVisible={setIsVisible} /></BrowserRouter>
     );
   }
 
