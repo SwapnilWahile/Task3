@@ -20,7 +20,7 @@ export default function App() {
     state: "",
     zipcode: "",
     country: "",
-    time: [],
+    times: []
   });
   const [data, setData] = useState([
     {
@@ -32,6 +32,7 @@ export default function App() {
       state: "California",
       zipcode: "95814",
       country: "United states",
+      times: [{Fromh:'9', Fromm:'30', Toh:'13', Tom:'00'}, {Fromh:'17', Fromm:'30', Toh:'21', Tom:'00'}]
     },
   ]);
   return (

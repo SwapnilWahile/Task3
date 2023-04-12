@@ -1,5 +1,6 @@
 .comp{
     margin: 20px;
+    width: auto;
   }
   .Header{
     top: 87px;
@@ -26,8 +27,10 @@
     margin: 30px;
   }
   .App2{
-    border-radius: 12px; 
+    height: 40px;
     padding: 20px;
+    vertical-align: middle;
+    text-align: justify;
     text-align: left;
     margin: 30px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -103,6 +106,8 @@
     opacity: 50%;
   }
   #pg1bt2{
+    width: 200px;
+    height: 36px;
     border-radius: 6px; 
     font-family: lato;
     font-weight: bold;

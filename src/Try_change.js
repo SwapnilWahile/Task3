@@ -7,15 +7,10 @@ import './alternate.css';
 
 function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
   const string = "> Address & Timings";
-  //const [index, setIndex] = useState();
   const handleClick = (i) => {
-    
     setIndex(i);
-    console.log(i);
     setObj(data[i]);
     setIsVisible(!isVisible);
-    let {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country} = datab[i];
-    console.log({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
   };
 
   
@@ -37,7 +32,7 @@ function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
               
               </section><br/><br/>
               <label id="lb2">Timings</label><br/><br/>
-              <section id="time" ></section>
+              <section id="time">{address.times.map((time, i)=> {return (<span>{time.Fromh}:{time.Fromm} to {time.Toh}:{time.Tom} {i!== address.times.length-1 ? <>&</> : '' } </span>) })}</section>
                </span>)
             })
           }<br/>

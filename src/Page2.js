@@ -2,136 +2,35 @@ import { Link } from "react-router-dom";
 import "./Page2.css";
 import React, { useState } from "react";
 import Page3 from "./Page2comp2";
-export let datab = [
-  {
-    AdressLine1: "1395 Park Avenue",
-    AddressLIne2: "",
-    phone: "+1442918940",
-    email: "hawk90@gmail.com",
-    city: "sacramento",
-    state: "California",
-    zipcode: "95814",
-    country: "United states",
-  },
-];
 
-function Input_Form({
-  isVisible,
-  setIsVisible,
-  setData,
-  data,
-  obj,
-  index,
-  setObj,
-  setIndex,
-  count,
-  setCount,
-}) {
-  console.log(obj);
+function Input_Form({isVisible,setIsVisible,setData,data,obj,index,setObj,setIndex,}) {
+
   const [address, setaddress] = useState(obj);
+  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,} = address;
 
-  
-  const {
-    AdressLine1,
-    AddressLIne2,
-    phone,
-    email,
-    city,
-    state,
-    zipcode,
-    country,
-  } = address;
   const handlechange = (e) => {
     setaddress({ ...address, [e.target.name]: e.target.value });
   };
-  const handleClick = (i) => {
-    setIsVisible(!isVisible);
-  };
-
-  function edit(index) {
-    // console.log("datab array is")
-    // console.log(datab);
-    console.log("data at index" + datab[index]);
-    // console.log(data[index]);
-    // let {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country}  =data[index];
-    // setaddress({AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country});
-  }
 
   function update(){
     let hold =  [...data];
-    console.log(index);
-     hold.splice(index,1,{
-        AdressLine1,
-        AddressLIne2,
-        phone,
-        email,
-        city,
-        state,
-        zipcode,
-        country,
-      });
-      setData(hold);
-      setObj({
-        AdressLine1: "",
-        AddressLIne2: "",
-        phone: "",
-        email: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        country: "",
-        time: [],
-      });
-      setIndex(0);
-      setIsVisible(!isVisible);
+    hold.splice(index,1,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,
+    times: [{From:'11:00', To:'1:00'}, {From:'2:00', To:'4:00'}]});
+    setData(hold);
+    setObj({AdressLine1: "",AddressLIne2: "",phone: "",email: "",city: "",state: "",zipcode: "",country: "",time: []});
+    setIndex(0);
+    setIsVisible(!isVisible);
   }
 function Cancel(){
   setIsVisible(!isVisible);
-  setObj({
-    AdressLine1: "",
-    AddressLIne2: "",
-    phone: "",
-    email: "",
-    city: "",
-    state: "",
-    zipcode: "",
-    country: "",
-    time: [],
-  });
+  setObj({AdressLine1: "",AddressLIne2: "",phone: "",email: "",city: "",state: "",zipcode: "",country: "",time: []});
 }
+
   function saveData() {
-    setData([
-      ...data,
-      {
-        AdressLine1,
-        AddressLIne2,
-        phone,
-        email,
-        city,
-        state,
-        zipcode,
-        country,
-      },
+    setData([...data,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,
+      times: [{From:'11:00', To:'1:00'}, {From:'2:00', To:'4:00'}]},
     ]);
     
-    // datab = [...datab, ...data];
-    datab.push({
-      AdressLine1,
-      AddressLIne2,
-      phone,
-      email,
-      city,
-      state,
-      zipcode,
-      country,
-    });
-
-
-    console.log(datab);
-    console.log("arrayis");
-    console.log(data.length);
-    console.log(data);
-    //setIsVisible(!isVisible);
   }
   return (
     <div>
