@@ -32,7 +32,8 @@ function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
               
               </section><br/><br/>
               <label id="lb2">Timings</label><br/><br/>
-              <section id="time">{address.times.map((time, i)=> {return (<span>{time.Fromh}:{time.Fromm} to {time.Toh}:{time.Tom} {i!== address.times.length-1 ? <>&</> : '' } </span>) })}</section>
+              <section id="time">{address.times.map((time, i)=> {return (<span>{time.fromh}:{time.fromm} to {time.toh}:{time.tom} {i!== address.times.length-1 ? <>&</> : '' } </span>) })}</section>
+               {console.log(address.times)}
                </span>)
             })
           }<br/>

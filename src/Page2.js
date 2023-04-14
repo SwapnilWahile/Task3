@@ -3,7 +3,8 @@ import "./Page2.css";
 import React, { useState } from "react";
 import { IoCloseCircleOutline} from "react-icons/io5";
 import { IoAddCircleOutline } from "react-icons/io5";
-
+const slots = [];
+let cntr = 0;
 function Input_Form({
   isVisible,
   setIsVisible,
@@ -12,27 +13,43 @@ function Input_Form({
   obj,
   index,
   setObj,
-  setIndex
+  setIndex,
+  // times, setTimes
 }) {
-  console.log(obj);
-  const[time,setTime]=useState({Fromh:"", Fromm:"", Toh:"", Tom:""});
+  
+  const sample = [{Fromh:'6', Fromm:'30', Toh:'8', Tom:'00'}, {Fromh:'12', Fromm:'30', Toh:'1', Tom:'00'}];
+  
+  let time;
+  //const[times, setTimes]=useState([]);
+  //const [sample, setSample] = useState(0);
   const[bolin,setbolin]=useState(true);
   const handleclick = ()=>{
-      setbolin(false);
+    console.log('clicked');
+    //setTimes(arr => [...arr, time]);
+    console.log(times);
+    setbolin(!bolin);
+
    }
-  const [country1,setcountry] = useState(["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]);
+function tiemset(){
+  let hold = address;
+    hold.times = slots;
+    setaddress(hold);
+}
+  const [country1,setcountry] = useState(["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"]);
   const [address, setaddress] = useState(obj);
-  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,} = address;
+  const {AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country, times} = address;
 
   const handlechange = (e) => {
     setaddress({ ...address, [e.target.name]: e.target.value });
   };
 
   function update(){
+    slots.splice(0, slots.length);
     let hold =  [...data];
-    hold.splice(index,1,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,
-    times: [{From:'11:00', To:'1:00'}, {From:'2:00', To:'4:00'}]});
+    tiemset();
+    hold.splice(index,1,{...address});
     setData(hold);
+    //
     setObj({AdressLine1: "",AddressLIne2: "",phone: "",email: "",city: "",state: "",zipcode: "",country: "",time: []});
     setIndex(0);
     setIsVisible(!isVisible);
@@ -43,51 +60,59 @@ function Cancel(){
 }
 
   function saveData() {
-    console.log(address.times);
-    address.times.push(time);
-    // setaddress({...address, address.times })
-    setData([...data,{AdressLine1,AddressLIne2,phone,email,city,state,zipcode,country,
-      times: [{From:'11:00', To:'1:00'}, {From:'2:00', To:'4:00'}]},
-    ]);
-    
+    tiemset();
+    // let hold = address;
+    // hold.times = slots;
+    // setaddress(hold);
+    setData([...data,{...address}]);
   }
-  function Page5() {
+
+   function Page5() {
+    
     const[array,setarray]=useState([]);
-    const [time,settime]=useState({from:"",to:""});
-    const selects =(e)=>
-    {
-      console.log(e.target.value)
-      console.log(e.target.id)
-      settime({...time,[e.target.id]:e.target.value});
-    }
-  
-    const [hourarray,sethourarray]=useState([]);
-    for(let i=0;i<=12;i++)
-    {
-      hourarray.push(i)
-    }
-   const [minutearray,setminutearray]=useState([]);
-     for(let i=0;i<=60;i++)
-     {
-       minutearray.push(i)
-     }
-  console.log(time)
+   
+    const [hourarray,sethourarray]=useState(["0","1","2","3","4","5","6","7","8","9","10","11","12"]);
+    const [minutearray,setminutearray]=useState(["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17"
+      ,"18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41",
+      "42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"]);
+      const [time1,setTime1]=useState({fromh:"",fromm:"",toh:"",tom:""});
+      function handletime (e){
+        cntr = cntr + 1;
+        setTime1({ ...time1, [e.target.name]: e.target.value });
+      };
+     
+
+  console.log(time1);
+  console.log(cntr);
+  if(cntr===4){
+    slots.push(time1);
+    console.log("hello");
+  cntr=cntr*0;
+
+  }
+  console.log(slots);
+  console.log(cntr);
+
    return (
   <div>
   
-     <div  className="leftside" >
-        <label style={{font:'14px Lato',width:"46px",height: "24px", left: "348px"}}>From</label>  <label  id ="to" style={{font:'14px Lato',width:"21px",height: "24px", left: "599px"}}>To</label> <br/>
-                     <select  onChange={e=>selects(e)} style={{width:"80px",height: "56px",borderRadius: '8px'  }}>  
+     <div  id="leftside" >
+        <label style={{font:'20px Lato',width:"46px",height: "24px", marginTop:"33px"}}>From</label>  <label  id ="to" style={{font:'20px Lato',width:"21px",height: "24px", left: "599px"}}>To</label> <br/>
+                  <select   name="fromh" onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px' ,marginTop:"13px" }}>  
+                    
                      {
                            hourarray.map((info) => { 
+                            
+                         
                                    return(
-                                     <option  id="from" value={info}>{info}</option>
+
+                                     <option   name="fromh" value={info}>{info}</option>
                                    )
                                    }
                              )
                        }
                      </select>{' '}
-                     <select onChange={e=>selects(e)} style={{width:"80px",height: "56px",borderRadius: '8px'}}> 
+                      <select  name="fromm"  onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px' ,marginLeft:"16px"}}> 
                      {
                              minutearray.map((info) => { 
                                    return(
@@ -98,7 +123,7 @@ function Cancel(){
                        }
                      </select>{" "}
                      
-                       <select onChange={e=>selects(e)} id="mar" style={{width:"80px",height: "56px" ,borderRadius: '8px' }}>  
+                       <select name="toh"  onChange={handletime} id="mar" style={{width:"100px",height: "56px" ,borderRadius: '8px' ,marginLeft:"35px"}}>  
                          {
                                hourarray.map((info) => { 
                                        return(
@@ -109,7 +134,7 @@ function Cancel(){
                            }
                          </select>{' '}
                          
-                     <select  onChange={e=>selects(e)} style={{width:"80px",height: "56px",borderRadius: '8px'}}> 
+                     <select name="tom"  onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px',marginLeft:"16px"}}>
                      {
                              minutearray.map((info) => { 
                                    return(
@@ -120,80 +145,69 @@ function Cancel(){
                        }
                      </select>{' '}
   
-                      <br/><br/>  
-             </div> 
-                      
-     </div>
-   )
-  }
-  function Page4() {
+                      <br/><br/>   
+                      <div>
 
-    const [hourarray,sethourarray]=useState([]);
-    for(let i=0;i<=12;i++)
-    {
-      hourarray.push(i)
-    }
-   const [minutearray,setminutearray]=useState([]);
-     for(let i=0;i<=60;i++)
-     {
-       minutearray.push(i)
-     }
-   return (
+
  <div>
- 
-     <div  className="leftside" >
-     <label id="from">From</label>  <label  id ="to" >To</label> <br/>
-                     <select id="select">  
+
+ <label style={{font:'20px Lato',width:"46px",height: "24px", marginTop:"33px"}}>From</label>  <label  id ="to" style={{font:'20px Lato',width:"21px",height: "24px", left: "599px"}}>To</label> <br/>
+                  <select   name="fromh" onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px' ,marginTop:"13px" }}>  
                      {
                            hourarray.map((info) => { 
                                    return(
-                                     <option value={info}>{info}</option>
+                                     <option  value={info}>{info}</option>
                                    )
                                    }
                              )
                        }
                      </select>{' '}
-                     <select  name="fromm"  style={{width:"100px",height: "56px",borderRadius: '8px' ,marginLeft:"16px"}}> 
+                     <select  name="fromm"  onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px' ,marginLeft:"16px"}}> 
                      {
                              minutearray.map((info) => { 
                                    return(
-                                     <option value={info}>{info}</option>
+                                     <option  name="fromm"  value={info}>{info}</option>
                                    )
                                    }
                              )
                        }
                      </select>{" "}
                      
-                       <select  id="mar" style={{width:"100px",height: "56px" ,borderRadius: '8px' }}>  
+                     <select name="toh" onChange={handletime} id="mar" style={{width:"100px",height: "56px" ,borderRadius: '8px' ,marginLeft:"35px"}}>  
                          {
                                hourarray.map((info) => { 
                                        return(
-                                         <option value={info}>{info}</option>
+                                         <option  name="toh" value={info}>{info}</option>
                                        )
                                        }
                                  )
                            }
                          </select>{' '}
                          
-                     <select style={{width:"100px",height: "56px",borderRadius: '8px'}}> 
+                         <select name="tom"  onChange={handletime}  style={{width:"100px",height: "56px",borderRadius: '8px',marginLeft:"16px"}}>
                      {
                              minutearray.map((info) => { 
                                    return(
-                                     <option value={info}>{info}</option>
+                                     <option name="tom" value={info}>{info}</option>
                                    )
                                    }
                              )
                        }
                      </select>{' '}
+                     <button   id="addtime" ><IoCloseCircleOutline color="#0078D4" style={{height:"27px",width:"27px"}} /></button> <br/><br/>   
                    
                      
              </div> 
                       
      </div>
-   )
- }
+             </div> 
+                      
+     </div>
 
-  
+     
+   )
+  }
+
   return (
     <div>
       <div className="rectangle">
@@ -297,12 +311,12 @@ function Cancel(){
           <div><div id ="display"><p id="Tlbl" style={{font:'22px Lato'}} >Timings</p><Page5/>{bolin ?
     <div>
      
-   <button id="button" onClick={handleclick}><IoAddCircleOutline Add-Timing color="#0078D4" /><u>Add Timings</u></button>
+     <button id="addtime" onClick={handleclick}><IoAddCircleOutline color="#0078D4"   /><u id="add">Add Timings</u></button>
     
-   </div>
-    : <span>
-    <Page4/> <button id="button" onClick={handleclick}><IoAddCircleOutline Add-Timing color="#0078D4" /><u>Add Timings</u></button>
-    </span>
+    </div>
+     : <span>
+     <Page5/> <br/><button id="addtime" onClick={handleclick}><IoAddCircleOutline color="#0078D4" /><u id="add">Add Timings</u></button>
+     </span>
     
   }
   </div> 
@@ -318,12 +332,13 @@ function Cancel(){
             </Link>
           ) : (
             <Link to="/">
-              <button onClick={update} className="button">
-                update
-              </button>{" "}
-              <button className="button" onClick={Cancel}>
+              <button className="button1" onClick={Cancel}>
                 Cancel
               </button>
+              <button onClick={update} className="button">
+                Update
+              </button>{" "}
+              
             </Link>
           )}
         </div>
