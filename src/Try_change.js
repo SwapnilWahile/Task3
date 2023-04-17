@@ -41,7 +41,7 @@ function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
           }<br/>
         </div>
         <div className="App2">
-          <label id='div2lbl'>You can add multiple address & timings</label>
+          <label id='div2lbl'>You can one add multiple address & timings</label>
           <Link to="/Page2" ><button id="pg1bt2" >Add Address & Timing</button></Link>
           <Outlet />
           
