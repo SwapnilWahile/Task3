@@ -1,15 +1,17 @@
 import React, {useState, useContext}  from 'react';
 import { FaEdit } from "react-icons/fa";
 import { Outlet, Link } from "react-router-dom";
-import {datab} from './Page2';
+import {slots} from './Page2';
 //import './App.css';
 import './alternate.css';
-
+export let slotsLength;
 function Page1({setIndex, data, setObj, index, setIsVisible, isVisible}){
   const string = "> Address & Timings";
   const handleClick = (i) => {
     setIndex(i);
     setObj(data[i]);
+    slotsLength = slots.length;
+    //slots.splice(0, slots.length);
     setIsVisible(!isVisible);
   };
 
